@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div{ margin:100px auto; border:1px solid #ccc; width:400px; text-align:center; padding:30px;}
+div h2{color:red;}
+input{ width:200px; height:50px; font-size:50px; text-align:center; margin-bottom:20px; padding:30px; border-radius:10px}
+button{ height:40px; width:60px;}
+</style>
+
+<script>
+window.onload=function(){
+	var names='舒熙,舒勇志,陈奕迅,汪峰,汪涵,何炅,张杰,赵本山,范冰冰,郑凯,李晨,沈腾,姚明,刘翔,张三,李四,王五,胡北,于淼,岳铭飞,王鹏,李小华,舒展,岳云鹏,舒展,闫金娈,舒展,张璇,舒展,华帝哥,舒展,王久新,舒展,尤佳鑫,舒展,吴佳新,舒展,刘钢,舒展';
+	var arr=names.split(',');	
+	var btn=document.getElementsByTagName('button');
+	var input=document.getElementsByTagName('input')[0];
+	var timer;
+	
+	btn[0].onclick=function(){
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var index=parseInt(Math.random()*arr.length);
+			input.value=arr[index];
+		},200)
+	};
+	btn[1].onclick=function(){
+		clearInterval(timer);
+	}
+
+}
+
+
+</script>
+</head>
+
+<body>
+<div>
+	<h2>获得中国体彩600万元大奖的是？</h2>
+	<input type="text" readonly value="谁？">
+    <br>
+	<button type="button">开始</button>
+	<button type="button">停</button>
+
+</div>
+</body>
+</html>

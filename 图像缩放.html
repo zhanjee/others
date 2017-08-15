@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>图像缩放</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /*
+            这里的CSS代码将无序列表的任何margin和padding都删除，并设置其子元素的display为inline，
+            设置每个子元素的overflow属性为hidden。
+            CSS代码还将图像的top和left设为-50%，让图像中间位于list元素内。还将图像的opacity设为0.5。
+            */
+            body {
+                background-color: #333;
+            }
+            .container {
+                width: 600px;
+                height: 600px;
+                margin: 50px auto auto auto;
+            }
+            .photos {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .photos li {
+                display: inline-block;
+                width: 290px;
+                height: 250px;
+                background-color: #E1E1E1;
+                margin: 0 5px 5px 0;
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+            }
+            .photos li img {
+                top: -50%;
+                left: -50%;
+                position: absolute;
+                opacity: 0.5;
+            }
+        </style>
+        <script src="js/jquery-3.1.0.js"></script>
+        <script>
+            $(function(){
+                var images=[];
+                $("ul.photos").find("li").each(function(index){
+                    var img=$(this).find("img");
+                    //img.width()  img.height()  jquery提供的获取图片尺寸的方法
+                    images.push({width:img.width(),height:img.height()});
+
+                    img.hover(
+                            function(){
+                                $(this).finish().animate({
+                                    width:290,
+                                    height:250,
+                                    top:0,
+                                    left:0,
+                                    opacity:1
+                                })
+                            },
+                            function(){
+                                $(this).finish().animate({
+                                    width:images[index].width,
+                                    height:images[index].height,
+                                    top:"-50%",
+                                    left:"-50%",
+                                    opacity:0.5
+                                })
+                            }
+                    )
+
+                })
+            })
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <ul class="photos">
+                <li><img src="images/countryside01.jpg" alt="Countryside 1" /></li>
+                <li><img src="images/countryside02.jpg" alt="Countryside 2" /></li>
+                <li><img src="images/countryside03.jpg" alt="Countryside 3" /></li>
+                <li><img src="images/countryside04.jpg" alt="Countryside 4" /></li>
+            </ul>
+        </div>
+    </body>
+</html>

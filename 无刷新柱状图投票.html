@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无刷新柱状图投票</title>
+    <style type="text/css">
+        .panel-body div {
+            font-weight: bold;
+            background: #0099cc;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 18px;
+            color: #ffffff;
+            width: 300px;
+        }
+        .panel-body div a {
+            border-radius: 0.3em;
+            text-decoration: none;
+            color: #0099cc;
+            padding: 5px 10px;
+            background: #eee;
+            margin: 0 20px;
+        }
+        .panel-body div a:hover {
+            color: #fff;
+        }
+    </style>
+    <script src="js/jquery-3.1.0.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script>
+        $(function(){
+            $(".panel-body div a").on("click",function(){
+                $(this).parent().finish().animate({"width":"+=50px"});
+                //prev()方法,        找前面的一个元素
+                $(this).prev().text(parseInt($(this).prev().text())+1)
+            })
+        })
+    </script>
+</head>
+<body class="container">
+<div class="panel panel-primary">
+    <div class="panel-heading">你最喜欢的编程语言是哪一种?</div>
+    <div class="panel-body">
+        <div><span>0</span><a href="#">投票</a>PHP</div>
+        <div><span>0</span><a href="#">投票</a>Ruby</div>
+        <div><span>0</span><a href="#">投票</a>Java</div>
+        <div><span>0</span><a href="#">投票</a>ASP</div>
+        <div><span>0</span><a href="#">投票</a>Perl</div>
+        <div><span>0</span><a href="#">投票</a>ColdFusion</div>
+    </div>
+</div>
+</body>
+</html>
